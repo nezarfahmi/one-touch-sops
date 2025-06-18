@@ -14,6 +14,7 @@
     }
   </style>
   <body>
+    {% include 'nav.html' %}
     <div class="container"> 
         <h1 class="text-center mt-4 mb-4">{{company_name}} Careers</h1>
         <img class="img-fluid" id="banner" src="https://ae0e2f12-8612-4694-aefb-b234b18df4c0-00-2ptsk19ay4nos.janeway.replit.dev/static/onetouch.jpeg" height=200px>
@@ -29,8 +30,8 @@
       </div>
       <div class="text-center">
       <button class="btn btn-primary btn-lg">Contact Us</button>
-        <p class="mt-4">Copyright &#169; One-Touch Automation, 2025</p>
       </div>
     </div>
+    {% include 'footer.html' %}
   </body>
 </html>
