@@ -1,0 +1,3 @@
+Flask
+gunicorn
+#gunicorn is used when you want to put a Flask project into production. 
