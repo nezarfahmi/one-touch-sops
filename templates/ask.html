@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>One-Touch SOP Assistant</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f2f4f8;
+    }
+
+    .chat-wrapper {
+      max-width: 800px;
+      margin: 60px auto;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      height: 80vh;
+    }
+
+    .chat-box {
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 6px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .message {
+      display: flex;
+      max-width: 80%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      white-space: pre-line;
+    }
+
+    .user {
+      background-color: #d1e7dd;
+      align-self: flex-end;
+      border-bottom-right-radius: 0;
+    }
+
+    .bot {
+      background-color: #e9ecef;
+      align-self: flex-start;
+      border-bottom-left-radius: 0;
+    }
+
+    .chat-form {
+      display: flex;
+      gap: 10px;
+    }
+
+    .chat-form input {
+      flex: 1;
+    }
+
+    .sources {
+      font-size: 0.9rem;
+      color: #6c757d;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  {% include 'nav.html' %}
+  <div class="chat-wrapper">
+    <div class="chat-box">
+      {% if question %}
+        <div class="message user">
+          <strong>You:</strong><br>{{ question }}
+        </div>
+      {% endif %}
+      {% if answer %}
+        <div class="message bot">
+          <strong>Assistant:</strong><br>{{ answer }}
+          {% if sources %}
+            <div class="sources">
+              <strong>Sources:</strong>
+              <ul>
+                {% for src in sources %}
+                  <li>{{ src.source }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    <form method="POST" class="chat-form">
+      <input type="text" name="question" class="form-control" placeholder="Ask a question..." required>
+      <button type="submit" class="btn btn-primary">Ask</button>
+    </form>
+  </div>
+  {% include 'footer.html' %}
+</body>
+</html>
