@@ -1,9 +1,9 @@
 <nav class="navbar shadow-sm fixed-top bg-white">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="/static/logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+    <a class="navbar-brand" href="/">
+      <img src="{{ url_for('static',filename='logo.svg')}}" alt="Logo" width="30" height="24">
       One-Touch Automation
     </a>
   </div>
 </nav>
-<div style="height:56px"></div>
+<div style="height:56px"></div> <!--spacer to avoid having content under navbar-->
